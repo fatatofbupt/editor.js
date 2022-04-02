@@ -178,7 +178,7 @@ export default class Toolbar extends Module<ToolbarNodes> {
     open: () => void;
     toggle: () => void;
     hasFocus: () => boolean;
-    } {
+  } {
     return {
       opened: this.toolboxInstance.opened,
       close: (): void => this.toolboxInstance.close(),
@@ -280,7 +280,32 @@ export default class Toolbar extends Module<ToolbarNodes> {
      * Move Toolbar to the Top coordinate of Block
      */
     this.nodes.wrapper.style.transform = `translate3D(0, ${Math.floor(toolbarY)}px, 0)`;
+    // console.log('moveAndOpen: blockname:',block.name)
+    // console.log('moveAndOpen: config:',JSON.stringify(block.config,null,2))
+    // console.log('moveAndOpen: settings:',JSON.stringify(block.settings,null,2))
+    //在tool的config中配置是否显示plusButton
+    if (block.settings.hidePlusButton) {
+      this.plusButton.hide()
+      this.blockTunesToggler.show();
 
+    } else {
+      if (block.isEmpty) {
+        this.blockTunesToggler.hide();
+        this.plusButton.show()
+
+      } else {
+        this.blockTunesToggler.show();
+        this.plusButton.hide()
+      }
+
+    }
+
+
+    // if (block.isEmpty) {
+    //   this.blockTunesToggler.hide();
+    // } else {
+    //   this.blockTunesToggler.show();
+    // }
     /**
      * Plus Button should be shown only for __empty__ __default__ block
      *
@@ -295,11 +320,19 @@ export default class Toolbar extends Module<ToolbarNodes> {
     /**
      * Do not show Block Tunes Toggler near single and empty block
      */
+<<<<<<< HEAD
     if (this.Editor.BlockManager.blocks.length === 1 && block.isEmpty) {
       this.blockTunesToggler.hide();
     } else {
       this.blockTunesToggler.show();
     }
+=======
+    // if (this.Editor.BlockManager.blocks.length === 1 && block.isEmpty) {
+    //   this.blockTunesToggler.hide();
+    // } else {
+    //   this.blockTunesToggler.show();
+    // }
+>>>>>>> feat/ssp-pai
 
     this.open();
   }
@@ -367,7 +400,12 @@ export default class Toolbar extends Module<ToolbarNodes> {
      *  - Toolbox
      */
     this.nodes.plusButton = $.make('div', this.CSS.plusButton);
+<<<<<<< HEAD
     $.append(this.nodes.plusButton, $.svg('plus', 16, 16));
+=======
+    $.append(this.nodes.plusButton, $.svg('dots', 16, 16));
+    // $.append(this.nodes.plusButton, $.svg('plus', 16, 16));
+>>>>>>> feat/ssp-pai
     $.append(this.nodes.actions, this.nodes.plusButton);
 
     this.readOnlyMutableListeners.on(this.nodes.plusButton, 'click', () => {
@@ -384,10 +422,10 @@ export default class Toolbar extends Module<ToolbarNodes> {
     tooltipContent.appendChild($.make('div', this.CSS.plusButtonShortcut, {
       textContent: '⇥ Tab',
     }));
-
-    this.tooltip.onHover(this.nodes.plusButton, tooltipContent, {
-      hidingDelay: 400,
-    });
+    //fatcat
+    // this.tooltip.onHover(this.nodes.plusButton, tooltipContent, {
+    //   hidingDelay: 400,
+    // });
 
     /**
      * Fill Actions Zone:
@@ -400,14 +438,14 @@ export default class Toolbar extends Module<ToolbarNodes> {
 
     $.append(this.nodes.settingsToggler, settingsIcon);
     $.append(this.nodes.actions, this.nodes.settingsToggler);
-
-    this.tooltip.onHover(
-      this.nodes.settingsToggler,
-      I18n.ui(I18nInternalNS.ui.blockTunes.toggler, 'Click to tune'),
-      {
-        hidingDelay: 400,
-      }
-    );
+    //fatcat
+    // this.tooltip.onHover(
+    //   this.nodes.settingsToggler,
+    //   I18n.ui(I18nInternalNS.ui.blockTunes.toggler, 'Click to tune'),
+    //   {
+    //     hidingDelay: 400,
+    //   }
+    // );
 
     /**
      * Appending Toolbar components to itself
@@ -445,7 +483,7 @@ export default class Toolbar extends Module<ToolbarNodes> {
       this.Editor.UI.nodes.wrapper.classList.remove(this.CSS.openedToolboxHolderModifier);
     });
 
-    this.toolboxInstance.on(ToolboxEvent.BlockAdded, ({ block }: {block: BlockAPI }) => {
+    this.toolboxInstance.on(ToolboxEvent.BlockAdded, ({ block }: { block: BlockAPI }) => {
       const { BlockManager, Caret } = this.Editor;
       const newBlock = BlockManager.getBlockById(block.id);
 
@@ -505,7 +543,7 @@ export default class Toolbar extends Module<ToolbarNodes> {
     /**
      * Subscribe to the 'block-hovered' event
      */
-    this.eventsDispatcher.on(this.Editor.UI.events.blockHovered, (data: {block: Block}) => {
+    this.eventsDispatcher.on(this.Editor.UI.events.blockHovered, (data: { block: Block }) => {
       /**
        * Do not move toolbar if Block Settings or Toolbox opened
        */

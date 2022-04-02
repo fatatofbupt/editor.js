@@ -229,7 +229,13 @@ export default class Toolbox extends EventsDispatcher<ToolboxEvent> {
     return Array
       .from(this.tools.values())
       .filter(tool => {
+
         const toolToolboxSettings = tool.toolbox;
+        // console.log(`tool:${JSON.stringify(tool.name, null, 2)}`)
+        //fatcat 跳过原生的的paragraph
+        if (tool.name == "paragraph") {
+          return false;
+        }
 
         /**
          * Skip tools that don't pass 'toolbox' property

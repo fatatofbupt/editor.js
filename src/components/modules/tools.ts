@@ -212,18 +212,19 @@ export default class Tools extends Module {
         class: Stub,
         isInternal: true,
       },
-      moveUp: {
-        class: MoveUpTune,
-        isInternal: true,
-      },
-      delete: {
-        class: DeleteTune,
-        isInternal: true,
-      },
-      moveDown: {
-        class: MoveDownTune,
-        isInternal: true,
-      },
+      //fatcat 去掉editorjs原生的actions
+      // moveUp: {
+      //   class: MoveUpTune,
+      //   isInternal: true,
+      // },
+      // delete: {
+      //   class: DeleteTune,
+      //   isInternal: true,
+      // },
+      // moveDown: {
+      //   class: MoveDownTune,
+      //   isInternal: true,
+      // },
     };
   }
 

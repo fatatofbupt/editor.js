@@ -385,7 +385,11 @@ export default class UI extends Module<UINodes> {
    */
   private watchBlockHoveredEvents(): void {
     /**
+<<<<<<< HEAD
      * Used to not emit the same block multiple times to the 'block-hovered' event on every mousemove
+=======
+     * Used to not to emit the same block multiple times to the 'block-hovered' event on every mousemove
+>>>>>>> feat/ssp-pai
      */
     let blockHoveredEmitted;
 
