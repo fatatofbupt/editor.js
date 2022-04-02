@@ -1,0 +1,4 @@
+.ce-toolbox {
+  top: var(--toolbar-buttons-size);
+  left: 0;
+}
