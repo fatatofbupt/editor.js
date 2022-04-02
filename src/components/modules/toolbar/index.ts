@@ -320,19 +320,12 @@ export default class Toolbar extends Module<ToolbarNodes> {
     /**
      * Do not show Block Tunes Toggler near single and empty block
      */
-<<<<<<< HEAD
-    if (this.Editor.BlockManager.blocks.length === 1 && block.isEmpty) {
-      this.blockTunesToggler.hide();
-    } else {
-      this.blockTunesToggler.show();
-    }
-=======
+    //fatcat
     // if (this.Editor.BlockManager.blocks.length === 1 && block.isEmpty) {
     //   this.blockTunesToggler.hide();
     // } else {
     //   this.blockTunesToggler.show();
     // }
->>>>>>> feat/ssp-pai
 
     this.open();
   }
@@ -400,12 +393,9 @@ export default class Toolbar extends Module<ToolbarNodes> {
      *  - Toolbox
      */
     this.nodes.plusButton = $.make('div', this.CSS.plusButton);
-<<<<<<< HEAD
-    $.append(this.nodes.plusButton, $.svg('plus', 16, 16));
-=======
+    //fatcat 把原生的dots icon放到plus上，看起来一样！！！
     $.append(this.nodes.plusButton, $.svg('dots', 16, 16));
     // $.append(this.nodes.plusButton, $.svg('plus', 16, 16));
->>>>>>> feat/ssp-pai
     $.append(this.nodes.actions, this.nodes.plusButton);
 
     this.readOnlyMutableListeners.on(this.nodes.plusButton, 'click', () => {
